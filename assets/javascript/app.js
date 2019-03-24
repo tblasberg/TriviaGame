@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 // set global var:
 var questionOne = {
     question: "Normal adult dogs have how many teeth?",
@@ -18,7 +20,7 @@ var questionThree = {
     question: "What is the most common training command taught to dogs?",
     answers: ["Stay", "Beg", "Sit", "Dance"],
     rightAnswer: "Sit",
-    image: "../images/sit.jpg", // get an image
+    image: "../images/sit.jpg", 
     }
 
 
@@ -26,7 +28,7 @@ var questionFive = {
     question: "What is the name of the dog on the front of the Cracker Jack box?",
     answers: ["Jack", "Max", "Bingo", "Fido"],
     rightAnswer: "Bingo",
-    image: "../images/cracker_jack.JPG", // get an image
+    image: "../images/cracker_jack.JPG", 
 }
 
 // it's working
@@ -34,16 +36,61 @@ var questionFive = {
 
 
 var countStartGame = 30;
+var timerRunning = false;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
+var intervalId;
 
 // user click on start to startGame
 function startGame(){
-    console.log("game starting");
+    countStartGame = 30;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+    unanswered = 0;
+
+    if (!timerRunning){ 
+        intervalId = setInterval(timer, 1000);
+        timerRunning = true;
+    }
+    timer();
+    console.log("game startiiing");
+    
 }
-// timer beggins 30 seconds countdown
-setTimeout(startGame, 1000); //change this after tests for 30 seconds 
+
+$("#start").on('click', startGame);
+
+
+console.log(countStartGame);
+
+
+// timer beggins 30 seconds countdown - will it be a function?
+function timer(){
+    countStartGame -= 1;
+    console.log(countStartGame);
+    if (countStartGame === 0){
+        console.log ("time's up");
+        //need to clear interval - add stop
+    }
+}
+
+
+// Main Questions:
+// 1. HTML - how to switch screens (when a correct answer is clicked, when a wrong answer is clicked, when question is unanswered) appear with by the end of 30 second timer?
+// 2. how to set interval of 5 sec between questions?
+// 3. how to compare if click was on the right answer?
+
+
+
+
+
+//=================================================================================================
+
+//create function to move to next question:
+
+// setTimeout(startGame, 1000); 
+
+//change this after tests for 30 seconds 
 
 // question is displayed 
 // 4 answers are displayed
@@ -60,3 +107,5 @@ setTimeout(startGame, 1000); //change this after tests for 30 seconds
 // OBSERVATIONS:
 
 // every time you click on the answer you have to clear the clearInterval, update the display and set a timer to display the answer
+
+})
