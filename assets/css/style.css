@@ -1,0 +1,9 @@
+body{
+    background-image: url("../images/dogs.jpg");
+}
+
+.content{
+    height: 800px;
+    padding-right: 80px;
+    padding-left: 80px;
+}
