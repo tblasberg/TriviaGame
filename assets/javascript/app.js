@@ -66,7 +66,7 @@ $(document).ready(function () {
         unanswered = 0;
         countDown();
         $('#timeRemaining').html(countStartGame + " seconds");
-
+    
     }
 
 
@@ -99,6 +99,7 @@ function updateCounter() {
         }
         else if (countStartGame < 1) {
             clearInterval(timer);
+            check();
             console.log("time's up");
             $("#timeRemaining").html("Time's Up!");
             $(".content").hide();
@@ -109,7 +110,7 @@ function updateCounter() {
     // =========================================================
 
     //CHECK IF ANSWERS ARE RIGHT:
-    
+
     function check() {
         var userClick = $('.answers').on('click', function (){
             if (userClick === rightAnswer){
@@ -118,9 +119,12 @@ function updateCounter() {
                 wrongAnswers ++;
             } else {
                 unanswered ++;
-            }
-
+            }            
         })
+        console.log(correctAnswers);
+        console.log(wrongAnswers);
+        console.log(unanswered);
+
     };
 
     //user clicks on only one answer
