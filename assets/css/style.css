@@ -1,5 +1,6 @@
 body{
     background-image: url("../images/dogs.jpg");
+    background-size: 100%;
 }
 
 .content{
