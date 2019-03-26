@@ -31,6 +31,32 @@ $(document).ready(function () {
     var wrongAnswers = 0;
     var unanswered = 0;
 
+    //Populate html with content (questions and answers)
+    //Questions:
+
+    for (var i=0; i < questions.length; i++){
+        var divQuestion = $('.question');
+        console.log(questions[i]);        
+        divQuestion.attr("data-question", questions[i]);
+        divQuestion.html(questions[i]);       
+        // questions[i].appendTo(divQuestion); - DO I NEED TO APPEND IT? THE DIVS ON HTML ALREADY EXIST.
+    }
+
+
+    //Answers:
+    for (var i=0; i < answers.length; i++){
+        var divAnswer = $('.answers');
+        console.log(answers[i]);        
+        divAnswer.attr("data-question", answers[i]);
+        divAnswer.html(answers[i]);       
+        // answers[i].appendTo(divAnswer); //- DO I NEED TO APPEND IT? THE DIVS ON HTML ALREADY EXIST.
+    }
+    //all the answers to the last question are showing in a single button
+    // I can't get the iteration to be place respectively on the 4 buttons on each div
+
+
+
+
     // user click on start to startGame
     function startGame() {
         console.log("startGame");
@@ -74,6 +100,7 @@ function updateCounter() {
         else if (countStartGame < 1) {
             clearInterval(timer);
             console.log("time's up");
+            $("#timeRemaining").html("Time's Up!");
             $(".content").hide();
             $(".results").show();
         }
@@ -81,41 +108,20 @@ function updateCounter() {
 
     // =========================================================
 
-
-    // Should I have my content on html or js file using jquery?
-
-    //create variables for every button answer
-
-    var q1a1 = $('.q1a1');
-    var q1a2 = $('.q1a2');
-    var q1a3 = $('.q1a3');
-    var q1a4 = $('.q1a4');
-
-    var q2a1 = $('.q2a1');
-    var q2a2 = $('.q2a2');
-    var q2a3 = $('.q2a3');
-    var q2a4 = $('.q2a4');
-
-    var q3a1 = $('.q3a1');
-    var q3a2 = $('.q3a2');
-    var q3a3 = $('.q3a3');
-    var q3a4 = $('.q3a4');
-
-
-
-
-
-
-
-
-
-
-
+    //CHECK IF ANSWERS ARE RIGHT:
+    
     function check() {
+        var userClick = $('.answers').on('click', function (){
+            if (userClick === rightAnswer){
+                correctAnswers ++;
+            } else if (userClick !== rightAnswer){
+                wrongAnswers ++;
+            } else {
+                unanswered ++;
+            }
 
-
-
-    }
+        })
+    };
 
     //user clicks on only one answer
     //other buttons are disabled

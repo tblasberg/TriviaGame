@@ -8,3 +8,7 @@ body{
     padding-right: 80px;
     padding-left: 80px;
 }
+
+.question{
+    border: 1px solid black;
+}
